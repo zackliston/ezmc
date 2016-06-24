@@ -1,0 +1,36 @@
+{
+  "author": "AgileMD, Inc. <support@agilemd.com>",
+  "private": true,
+  "name": "@agilemd/db-core",
+  "description": "core database",
+  "version": "8.3.1",
+  "repository": {
+    "url": "https://www.github.com/agilemd/db-core"
+  },
+  "scripts": {
+    "cover": "istanbul cover --dir=artifacts --report=json-summary --report=html node_modules/mocha/bin/_mocha -- --recursive",
+    "test": "node node_modules/mocha/bin/mocha ./test --recursive"
+  },
+  "engines": {
+    "node": "6.2.x"
+  },
+  "dependencies": {
+    "mongodb": "2.1.18"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "eslint": "2.13.1",
+    "eslint-config-airbnb": "9.0.1",
+    "eslint-plugin-import": "1.9.2",
+    "mocha": "2.5.3",
+    "mocha-eslint": "2.1.1",
+    "mockery": "1.7.0",
+    "sinon": "1.17.4",
+    "sinon-chai": "^2.8.0"
+  },
+  "standard": {
+    "ignore": [
+      "artifacts"
+    ]
+  }
+}
