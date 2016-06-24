@@ -75,14 +75,45 @@ Every methods first argument is the name of the collection you're referencing. T
 
 **Standard Behaviour**
 
-- `bulkWrite(collection, operations, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#bulkWrite)
-- `count(collection, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#count)
-- 
+- `bulkWrite(collectionName, operations, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#bulkWrite)
+- `count(collectionName, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#count)
+- `createIndex(collectionName, fieldOrSpecs, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#createIndex)
+- `createIndexes(collectionName, indexSpecs)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#createIndexes)
+- `deleteMany(collectionName, filter, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#deleteMany)
+- `deleteOne(collectionName, filter, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#deleteOne)
+- `distinct(collectionName, key, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#distinct)
+- `drop(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#drop)
+- `dropIndex(collectionName, indexName, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#dropIndex)
+- `dropIndexes(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#dropIndexes)
+- `find(collectionName, query)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#find)
+- `findOneAndDelete(collectionName, filter, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOneAndDelete)
+- `findOneAndReplace(collectionName, filter, replacement, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOneAndReplace)
+- `findOneAndUpdate(collectionName, filter, update, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOneAndUpdate)
+- `geoHaystackSearch(collectionName, x, y, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#geoHaystackSearch)
+- `geoNear(collectionName, x, y, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#geoNear)
+- `group(collectionName, keys, condition, initial, reduce, finalize, command, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#group)
+- `indexes(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#indexes)
+- `indexExists(collectionName, indexes)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#indexExists)
+- `indexInformation(collectionName, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#indexInformation)
+- `insertMany(collectionName, docs, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#insertMany)
+- `insertOne(collectionName, doc, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#insertOne)
+- `isCapped(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#isCapped)
+- `listIndexes(collectionName, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#listIndexes)
+- `mapReduce(collectionName, map, reduce, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#mapReduce)
+- `options(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#options)
+- `parallelCollectoinScan(collectionName, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#parallelCollectionScan)
+- `reIndex(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#reIndex)
+- `rename(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#rename)
+- `replaceOne(collectionName, filter, doc, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#replaceOne)
+- `stats(collectionName)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#stats)
+- `updateMany(collectionName, filter, update, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#updateMany)
+- `updateOne(collectionName, filter, update, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#updateOne)
 
 **Non-standard Behaviour**
-- `aggregate(collection, pipeline, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#aggregate)
+- `aggregate(collection, pipeline, options)` [Mongo Docs]() Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#aggregate)
  - Will return an array of results instead of a cursor unless `options.returnCursor` is true
 - `find(collection, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#find)
  - Will return an array of results instead of a cursor unless `options.returnCursor` is true
 - `findOne(collection, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#find)
  - Convience method. Simply calls `find` with the same arguments but adds `options.limit = 1` 
+ - Returns the document if it's found, and null if it is not. Does not return an array.
