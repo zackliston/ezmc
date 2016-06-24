@@ -1,7 +1,7 @@
 'use strict'; // eslint-disable-line strict
 
 const MongoClient = require('mongodb').MongoClient;
-const debug = require('debug')('@agilemd:db-core:index');
+const debug = require('debug')('ezmc');
 
 const KEYS = {
   connection: Symbol('connection'),
@@ -44,6 +44,13 @@ class DB {
 
       return cursor.toArray();
     });
+  }
+
+  bulkWrite(collection, operations, options) {
+    debug(`bulkWrite in collection: ${collection}`, { operations, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).bulkWrite(operations, options));
   }
 
   count(collection, query, options) {
@@ -155,6 +162,150 @@ class DB {
 
     return this[KEYS.connection]
     .then(db => db.collection(collection).findOneAndUpdate(filter, update, options));
+  }
+
+  geoHaystackSearch(collection, x, y, options) {
+    debug(`geoHaystackSearch in collection: ${collection} x: ${x}, y: ${y}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).geoHaystackSearch(x, y, options));
+  }
+
+  geoNear(collection, x, y, options) {
+    debug(`geoNear in collection: ${collection} x: ${x}, y: ${y}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).geoNear(x, y, options));
+  }
+
+  group(collection, keys, condition, initial, reduce, finalize, command, options) {
+    debug(
+      `group in collection: ${collection}`,
+      { keys, condition, initial, reduce, finalize, command, options }
+    );
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).group(
+      keys,
+      condition,
+      initial,
+      reduce,
+      finalize,
+      command,
+      options
+    ));
+  }
+
+  indexes(collection) {
+    debug(`indexes in collection ${collection}`);
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).indexes());
+  }
+
+  indexExists(collection, indexes) {
+    debug(`indexExists in collection: ${collection}`, { indexes });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).indexExists(indexes));
+  }
+
+  indexInformation(collection, options) {
+    debug(`indexInformation in collection: ${collection}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).indexInformation(options));
+  }
+
+  insertMany(collection, docs, options) {
+    debug(`insertMany in collection: ${collection}`, { docs, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).insertMany(docs, options));
+  }
+
+  insertOne(collection, doc, options) {
+    debug(`insertOne in collection: ${collection}`, { doc, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).insertOne(doc, options));
+  }
+
+  isCapped(collection) {
+    debug(`isCapped collection: ${collection}`);
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).isCapped());
+  }
+
+  listIndexes(collection, options) {
+    debug(`listIndexes in collection: ${collection}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).listIndexes(options));
+  }
+
+  mapReduce(collection, map, reduce, options) {
+    debug(`mapReduce in collection: ${collection}`, { map, reduce, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).mapReduce(map, reduce, options));
+  }
+
+  options(collection) {
+    debug(`options in collection: ${collection}`);
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).options());
+  }
+
+  parallelCollectionScan(collection, options) {
+    debug(`parallelCollectionScan in collection: ${collection}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).parallelCollectionScan(options));
+  }
+
+  reIndex(collection) {
+    debug(`reIndex in collection: ${collection}`);
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).reIndex());
+  }
+
+  rename(collection, newName, options) {
+    debug(`rename in collection: ${collection}, newName: ${newName}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).rename(newName, options));
+  }
+
+  replaceOne(collection, filter, doc, options) {
+    debug(`replaceOne in collection: ${collection}`, { filter, doc, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).replaceOne(filter, doc, options));
+  }
+
+  stats(collection, options) {
+    debug(`stats in collection: ${collection}`, { options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).stats(options));
+  }
+
+  updateMany(collection, filter, update, options) {
+    debug(`updateMany in collection: ${collection}`, { filter, update, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).updateMany(filter, update, options));
+  }
+
+  updateOne(collection, filter, update, options) {
+    debug(`updateOne in collection: ${collection}`, { filter, update, options });
+
+    return this[KEYS.connection]
+    .then(db => db.collection(collection).updateOne(filter, update, options));
   }
 }
 

@@ -6,9 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "mocha"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zackliston/ezmc.git"
@@ -26,6 +23,7 @@
   },
   "homepage": "https://github.com/zackliston/ezmc#readme",
   "scripts": {
+    "prepublish": "npm test",
     "cover": "istanbul cover --dir=artifacts --report=json-summary --report=html node_modules/mocha/bin/_mocha -- --recursive",
     "test": "node node_modules/mocha/bin/mocha ./test --recursive"
   },
