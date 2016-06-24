@@ -73,6 +73,8 @@ In order to keep things DRY we condensed our boilerplate code into one module. I
 ### API
 Every methods first argument is the name of the collection you're referencing. The arguments following that will be passed directly to the Mongo collection. The Mongo Collection documentation (linked under each method here) will provided details on the parameters and return values. Every method returns a promise.
 
+- `initializer (connectionString, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/MongoClient.html#connect)
+
 **Standard Behaviour**
 
 - `bulkWrite(collectionName, operations, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#bulkWrite)
