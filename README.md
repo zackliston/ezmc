@@ -30,4 +30,36 @@ client.count('MyCollection')
   });
 ```
 
-## install & use
+### Requirements
+
+- Node.js 4.4.x - 6.2.x
+
+### install & use
+First install ezmc
+
+```
+npm install --save ezmc
+```
+
+Secondly, to ensure there is only one instance for your entire application, we suggest that you create a file that exports 
+an initialized ezmc. You then reference this file everywhere you want to use ezmc.
+
+```js
+// mongoCollections.js
+const Ezmc = require('ezmc');
+
+module.exports = new Ezmc('connectionStrings', options);
+```
+
+You can then use the same instance anywhere in your application
+
+```js
+// index.js
+const mongoCollections = require('../path/to/mongoCollections');
+
+return mongoCollections.count('MyCollection')
+  .then(function (count) {
+    console.log(`MyCollection has ${count} documents`);
+  });
+```
+
