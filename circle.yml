@@ -5,3 +5,7 @@ machine:
 test:
   post:
     - npm run coverage
+
+general:
+  artifacts:
+    - "artifacts"
