@@ -1,3 +1,5 @@
+https://circleci.com/gh/zackliston/ezmc.svg?style=shield&circle-token=f6c716be55e9914a24afd619c32b6649ed187aac
+
 ezmc - Easy Mongo Collection access and management
 ================
 
