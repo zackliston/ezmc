@@ -24,13 +24,14 @@
   "homepage": "https://github.com/zackliston/ezmc#readme",
   "scripts": {
     "prepublish": "npm test",
-    "cover": "istanbul cover --dir=artifacts --report=json-summary --report=html node_modules/mocha/bin/_mocha -- --recursive",
+    "coverage": "istanbul cover --dir=artifacts --report=json-summary --report=html node_modules/mocha/bin/_mocha -- --recursive",
     "test": "node node_modules/mocha/bin/mocha ./test --recursive"
   },
   "engines": {
     "node": "4.4.x"
   },
   "dependencies": {
+    "istanbul": "^0.4.4",
     "mongodb": "2.1.18"
   },
   "devDependencies": {

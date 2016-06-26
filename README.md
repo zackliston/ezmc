@@ -11,7 +11,7 @@ const countPromise = MongoClient.connect('connectionString')
     const collection = db.collection('MyCollection');
     return collection.count():
   });
-  
+
 // Perform action on count
 countPromise.then(function (count) {
   console.log(`MyCollection has ${count} documents`));
@@ -41,7 +41,7 @@ First install ezmc
 npm install --save ezmc
 ```
 
-Secondly, to ensure there is only one instance for your entire application, we suggest that you create a file that exports 
+Secondly, to ensure there is only one instance for your entire application, we suggest that you create a file that exports
 an initialized ezmc. You then reference this file everywhere you want to use ezmc.
 
 ```js
@@ -117,5 +117,5 @@ Every methods first argument is the name of the collection you're referencing. T
 - `find(collection, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#find)
  - Will return an array of results instead of a cursor unless `options.returnCursor` is true
 - `findOne(collection, query, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#find)
- - Convience method. Simply calls `find` with the same arguments but adds `options.limit = 1` 
+ - Convience method. Simply calls `find` with the same arguments but adds `options.limit = 1`
  - Returns the document if it's found, and null if it is not. Does not return an array.
