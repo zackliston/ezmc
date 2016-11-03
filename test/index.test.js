@@ -1,12 +1,11 @@
-'use strict'; // eslint-disable-line strict
+/* eslint-disable global-require, no-unused-expressions, import/no-extraneous-dependencies */
 /* global describe, it, beforeEach, afterEach */
-/* eslint global-require: 0, no-unused-expressions: 0 */
 
 const chai = require('chai');
-const expect = chai.expect;
 const mockery = require('mockery');
 const sinon = require('sinon');
-chai.use(require('sinon-chai'));
+chai.use(require('sinon-chai')); // eslint-disable-line import/newline-after-import
+const expect = chai.expect;
 
 describe('DB class', () => {
   let DB;

@@ -1,12 +1,11 @@
-'use strict'; // eslint-disable-line strict
+/* eslint-disable global-require, no-unused-expressions, import/no-extraneous-dependencies */
 /* global describe, it, beforeEach, afterEach */
-/* eslint global-require: 0, no-unused-expressions: 0 */
 
 const chai = require('chai');
-const expect = chai.expect;
 const mockery = require('mockery');
 const sinon = require('sinon');
-chai.use(require('sinon-chai'));
+chai.use(require('sinon-chai')); // eslint-disable-line import/newline-after-import
+const expect = chai.expect;
 
 describe('find', () => {
   let DB;
@@ -70,36 +69,35 @@ describe('find', () => {
     });
   });
 
-  it('calls toArray on returned cursor', () => {
+  it('returns the cursor', () => {
     const db = new DB('fakeConnection');
     const collection = 'myCollection';
 
     return db.find(collection)
+    .then((response) => {
+      expect(response).to.deep.equal(cursorObject);
+    });
+  });
+
+  it('calls toArray on returned cursor if options.toArray is true', () => {
+    const db = new DB('fakeConnection');
+    const collection = 'myCollection';
+    const options = { toArray: true };
+
+    return db.find(collection, {}, options)
     .then(() => {
       expect(cursorToArrayMock).to.have.been.calledOnce;
     });
   });
 
-  it('returns the correct response', () => {
+  it('returns the correct response for options.toArry = tre', () => {
     const db = new DB('fakeConnection');
     const collection = 'myCollection';
-
-    return db.find(collection)
-    .then((response) => {
-      expect(response).to.deep.equal(cursorToArrayOutput);
-    });
-  });
-
-  it('returns the cursor if options.returnCursor is true', () => {
-    const db = new DB('fakeConnection');
-    const collection = 'myCollection';
-    const options = {
-      returnCursor: true
-    };
+    const options = { toArray: true };
 
     return db.find(collection, {}, options)
     .then((response) => {
-      expect(response).to.deep.equal(cursorObject);
+      expect(response).to.deep.equal(cursorToArrayOutput);
     });
   });
 });

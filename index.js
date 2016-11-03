@@ -1,5 +1,3 @@
-'use strict'; // eslint-disable-line strict
-
 const MongoClient = require('mongodb').MongoClient;
 const debug = require('debug')('ezmc');
 
@@ -36,7 +34,7 @@ class DB {
     debug(`aggregate in collection: ${collection}`, { pipeline, options });
 
     return this[KEYS.connection]
-    .then(db => {
+    .then((db) => {
       const cursor = db.collection(collection).aggregate(pipeline, options);
       if (options.returnCursor) {
         return cursor;
@@ -121,13 +119,13 @@ class DB {
     debug(`find in collection: ${collection}`, { query, options });
 
     return this[KEYS.connection]
-    .then(db => {
+    .then((db) => {
       const cursor = db.collection(collection).find(query, options);
-      if (options.returnCursor) {
-        return cursor;
+      if (options.toArray) {
+        return cursor.toArray();
       }
 
-      return cursor.toArray();
+      return cursor;
     });
   }
 
@@ -135,8 +133,8 @@ class DB {
     debug(`findOne in collection: ${collection}`, { query, options });
 
     const modifiedOptions = Object.assign({}, options, {
-      limit: 1,
-      returnCursor: false
+      toArray: true,
+      limit: 1
     });
 
     return this.find(collection, query, modifiedOptions)
