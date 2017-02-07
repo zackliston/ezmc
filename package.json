@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "debug": "2.2.0",
-    "mongodb": "2.2.16",
+    "mongodb": "2.2.22",
     "sinon-chai": "^2.8.0"
   },
   "devDependencies": {
