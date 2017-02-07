@@ -32,8 +32,7 @@
   },
   "dependencies": {
     "debug": "2.2.0",
-    "mongodb": "2.2.22",
-    "sinon-chai": "^2.8.0"
+    "mongodb": "2.2.22"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -44,6 +43,7 @@
     "mocha": "3.1.2",
     "mocha-eslint": "3.0.1",
     "mockery": "2.0.0",
-    "sinon": "1.17.6"
+    "sinon": "1.17.6",
+    "sinon-chai": "2.8.0"
   }
 }
