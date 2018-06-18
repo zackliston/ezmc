@@ -29,6 +29,11 @@ class DB {
     this[KEYS.connection] = MongoClient.connect(connectionString, options);
   }
 
+  close(force) {
+    return this[KEYS.connection]
+    .then(db => db.close(force));
+  }
+
   aggregate(collection, pipeline, _options) {
     const options = _options || {};
     debug(`aggregate in collection: ${collection}`, { pipeline, options });

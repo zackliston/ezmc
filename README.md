@@ -77,6 +77,8 @@ Every methods first argument is the name of the collection you're referencing. T
 
 - `initializer (connectionString, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/MongoClient.html#connect)
 
+- `close()` Close the database connection [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Db.html#close)
+
 **Standard Behaviour**
 
 - `bulkWrite(collectionName, operations, options)` [Mongo Docs](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#bulkWrite)
