@@ -31,19 +31,19 @@
     "node": "6.5.x"
   },
   "dependencies": {
-    "debug": "2.2.0",
-    "mongodb": "2.2.22"
+    "debug": "4.1.0",
+    "mongodb": "3.1.10"
   },
   "devDependencies": {
-    "chai": "3.5.0",
+    "chai": "4.2.0",
     "eslint": "3.9.1",
     "eslint-config-airbnb-base": "10.0.1",
     "eslint-plugin-import": "2.2.0",
     "istanbul": "0.4.5",
-    "mocha": "3.1.2",
+    "mocha": "5.2.0",
     "mocha-eslint": "3.0.1",
-    "mockery": "2.0.0",
-    "sinon": "1.17.6",
-    "sinon-chai": "2.8.0"
+    "mockery": "2.1.0",
+    "sinon": "7.1.1",
+    "sinon-chai": "3.3.0"
   }
 }
