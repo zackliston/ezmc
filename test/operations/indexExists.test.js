@@ -43,7 +43,7 @@ describe('indexExists', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.indexExists(collection)
@@ -53,7 +53,7 @@ describe('indexExists', () => {
   });
 
   it('calls indexExists on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const indexes = ['some', 'indexes'];
 
@@ -64,7 +64,7 @@ describe('indexExists', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.indexExists(collection)

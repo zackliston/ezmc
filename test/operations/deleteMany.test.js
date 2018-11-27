@@ -43,7 +43,7 @@ describe('deleteMany', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.deleteMany(collection)
@@ -53,7 +53,7 @@ describe('deleteMany', () => {
   });
 
   it('calls deleteMany on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const filter = { myDelete: 'filter' };
     const options = { someDelete: 'options' };
@@ -65,7 +65,7 @@ describe('deleteMany', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.deleteMany(collection)

@@ -43,7 +43,7 @@ describe('createIndexes', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.createIndexes(collection)
@@ -53,7 +53,7 @@ describe('createIndexes', () => {
   });
 
   it('calls createIndexes on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const indexSpecs = [{ ourField: 'field123' }];
 
@@ -64,7 +64,7 @@ describe('createIndexes', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.createIndexes(collection)

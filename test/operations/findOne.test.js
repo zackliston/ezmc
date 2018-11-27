@@ -50,7 +50,7 @@ describe('findOne', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.findOne(collection)
@@ -60,7 +60,7 @@ describe('findOne', () => {
   });
 
   it('calls find on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const query = { find: 'query' };
     const options = { some: 'options' };
@@ -75,7 +75,7 @@ describe('findOne', () => {
   });
 
   it('calls toArray on returned cursor', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.findOne(collection)
@@ -85,7 +85,7 @@ describe('findOne', () => {
   });
 
   it('returns an object if there was a match', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.findOne(collection)
@@ -137,7 +137,7 @@ describe('find => no match', () => {
   });
 
   it('returns null if results array was empty', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.findOne(collection)

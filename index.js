@@ -2,31 +2,29 @@ const MongoClient = require('mongodb').MongoClient;
 const debug = require('debug')('ezmc');
 
 const KEYS = {
-  connection: Symbol('connection'),
-  connectionString: Symbol('connectionString'),
-  connectionOptions: Symbol('connectionOptions')
+  client: Symbol('client'),
+  connection: Symbol('connection')
 };
 
 class DB {
-  constructor(connectionString, _options) {
+  constructor(connectionString, dbName, _options) {
     const options = _options || {};
+    Object.assign(options, { useNewUrlParser: true });
+
     debug(`init db-core with connectionString: ${connectionString} options:`, options);
 
     if (!connectionString) {
       throw new Error('db-core cannot be initiated without a connectionString');
     }
 
-    this[KEYS.connectionString] = connectionString;
-    this[KEYS.connectionOptions] = options;
+    this[KEYS.client] = new MongoClient(connectionString, options);
+    this[KEYS.dbName] = dbName;
     this.reconnect();
   }
 
   reconnect() {
-    const connectionString = this[KEYS.connectionString];
-    const options = this[KEYS.connectionOptions];
-    debug(`connecting with connectionString: ${connectionString} options: `, options);
-
-    this[KEYS.connection] = MongoClient.connect(connectionString, options);
+    this[KEYS.connection] = this[KEYS.client].connect()
+    .then(() => this[KEYS.client].db(this[KEYS.dbName]));
   }
 
   close(force) {

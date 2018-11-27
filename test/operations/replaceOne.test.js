@@ -43,7 +43,7 @@ describe('replaceOne', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.replaceOne(collection)
@@ -53,7 +53,7 @@ describe('replaceOne', () => {
   });
 
   it('calls replaceOne on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const filter = { test: 'filter' };
     const doc = { newDoc: 'info' };
@@ -66,7 +66,7 @@ describe('replaceOne', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.replaceOne(collection)

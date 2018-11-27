@@ -43,7 +43,7 @@ describe('insertMany', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.insertMany(collection)
@@ -53,7 +53,7 @@ describe('insertMany', () => {
   });
 
   it('calls insertMany on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const docs = [{ my: 'document' }];
     const options = { some: 'options' };
@@ -65,7 +65,7 @@ describe('insertMany', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.insertMany(collection)

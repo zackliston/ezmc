@@ -7,12 +7,14 @@ This module abstracts common database operations to provide a minimal API for da
 
 ```js
 const MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient('connectionString');
 
-const countPromise = MongoClient.connect('connectionString')
-  .then(function (db) {
-    const collection = db.collection('MyCollection');
-    return collection.count():
-  });
+const countPromise = client.connect('connectionString')
+.then(() => client.db('dbName'))
+.then(function (db) {
+  const collection = db.collection('MyCollection');
+  return collection.count():
+});
 
 // Perform action on count
 countPromise.then(function (count) {
@@ -24,7 +26,7 @@ Mongo suggest that we only have one MongoClient per application, so we are also 
 
 ```js
 const Ezmc = require('ezmc');
-const client = new Ezmc('connectionString')
+const client = new Ezmc('connectionString', 'dbName')
 
 client.count('MyCollection')
   .then(function (count) {
@@ -50,7 +52,7 @@ an initialized ezmc. You then reference this file everywhere you want to use ezm
 // mongoCollections.js
 const Ezmc = require('ezmc');
 
-module.exports = new Ezmc('connectionStrings', options);
+module.exports = new Ezmc('connectionStrings', 'dbName', options);
 ```
 
 You can then use the same instance anywhere in your application

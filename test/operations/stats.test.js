@@ -43,7 +43,7 @@ describe('stats', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.stats(collection)
@@ -53,7 +53,7 @@ describe('stats', () => {
   });
 
   it('calls stats on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const options = { some: 'options' };
 
@@ -64,7 +64,7 @@ describe('stats', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.stats(collection)

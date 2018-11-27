@@ -49,7 +49,7 @@ describe('aggregate', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.aggregate(collection)
@@ -59,7 +59,7 @@ describe('aggregate', () => {
   });
 
   it('calls aggregate on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const pipeline = ['pipeline', 'array'];
     const options = { aggregate: 'options' };
@@ -71,7 +71,7 @@ describe('aggregate', () => {
   });
 
   it('calls toArray on returned cursor', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.aggregate(collection)
@@ -81,7 +81,7 @@ describe('aggregate', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.aggregate(collection)
@@ -91,7 +91,7 @@ describe('aggregate', () => {
   });
 
   it('returns the cursor if options.returnCursor is true', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const options = {
       returnCursor: true

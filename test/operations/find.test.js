@@ -49,7 +49,7 @@ describe('find', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.find(collection)
@@ -59,7 +59,7 @@ describe('find', () => {
   });
 
   it('calls find on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const query = { find: 'query' };
 
@@ -70,7 +70,7 @@ describe('find', () => {
   });
 
   it('returns the cursor', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.find(collection)
@@ -80,7 +80,7 @@ describe('find', () => {
   });
 
   it('calls toArray on returned cursor if options.toArray is true', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const options = { toArray: true };
 
@@ -91,7 +91,7 @@ describe('find', () => {
   });
 
   it('returns the correct response for options.toArry = tre', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const options = { toArray: true };
 

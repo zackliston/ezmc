@@ -43,7 +43,7 @@ describe('dropIndex', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.dropIndex(collection)
@@ -53,7 +53,7 @@ describe('dropIndex', () => {
   });
 
   it('calls dropIndex on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const indexName = 'myIndex';
     const options = { some: 'Options' };
@@ -65,7 +65,7 @@ describe('dropIndex', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.dropIndex(collection)

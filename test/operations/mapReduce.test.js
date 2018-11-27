@@ -43,7 +43,7 @@ describe('mapReduce', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.mapReduce(collection)
@@ -53,7 +53,7 @@ describe('mapReduce', () => {
   });
 
   it('calls mapReduce on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const map = () => ('map');
     const reduce = () => ('reduce');
@@ -66,7 +66,7 @@ describe('mapReduce', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.mapReduce(collection)

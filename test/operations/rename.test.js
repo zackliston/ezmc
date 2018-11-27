@@ -42,7 +42,7 @@ describe('rename', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.rename(collection)
@@ -52,7 +52,7 @@ describe('rename', () => {
   });
 
   it('calls rename on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const newName = 'myNewName';
     const options = { some: 'options' };
@@ -64,7 +64,7 @@ describe('rename', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.rename(collection)

@@ -43,7 +43,7 @@ describe('geoHaystackSearch', () => {
   });
 
   it('gets the correct collection from the db object', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.geoHaystackSearch(collection)
@@ -53,7 +53,7 @@ describe('geoHaystackSearch', () => {
   });
 
   it('calls geoHaystackSearch on the returned collection with the correct parameters', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
     const x = 321;
     const y = 8832;
@@ -66,7 +66,7 @@ describe('geoHaystackSearch', () => {
   });
 
   it('returns the correct response', () => {
-    const db = new DB('fakeConnection');
+    const db = new DB('fakeConnection', 'dbName');
     const collection = 'myCollection';
 
     return db.geoHaystackSearch(collection)
