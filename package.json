@@ -24,7 +24,7 @@
   "homepage": "https://github.com/zackliston/ezmc#readme",
   "scripts": {
     "prepublish": "npm test",
-    "test": "node node_modules/mocha/bin/mocha ./test --recursive",
+    "test": "npx mocha ./test --recursive",
     "release": "standard-version --issueUrlFormat https://support.agilemd.com/helpdesk/browse/{{prefix}}{{id}} --issuePrefixes PR-",
     "postrelease": "git push && git push --tags"
   },
