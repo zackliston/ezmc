@@ -24,26 +24,45 @@
   "homepage": "https://github.com/zackliston/ezmc#readme",
   "scripts": {
     "prepublish": "npm test",
-    "coverage": "istanbul cover --dir=artifacts --report=json-summary --report=html node_modules/mocha/bin/_mocha -- --recursive",
-    "test": "node node_modules/mocha/bin/mocha ./test --recursive"
+    "test": "node node_modules/mocha/bin/mocha ./test --recursive",
+    "release": "standard-version --issueUrlFormat https://support.agilemd.com/helpdesk/browse/{{prefix}}{{id}} --issuePrefixes PR-",
+    "postrelease": "git push && git push --tags"
   },
   "engines": {
     "node": "6.5.x"
   },
   "dependencies": {
-    "debug": "4.1.0",
-    "mongodb": "3.1.10"
+    "debug": "4.2.0",
+    "mongodb": "3.6.2"
   },
   "devDependencies": {
+    "@agilemd/commitlint-config": "0.1.0",
+    "@agilemd/eslint-config": "2.3.0",
+    "@agilemd/prettier-config": "0.2.0",
+    "@commitlint/cli": "11.0.0",
     "chai": "4.2.0",
-    "eslint": "3.9.1",
-    "eslint-config-airbnb-base": "10.0.1",
-    "eslint-plugin-import": "2.2.0",
-    "istanbul": "0.4.5",
-    "mocha": "5.2.0",
-    "mocha-eslint": "3.0.1",
+    "husky": "4.3.0",
+    "lint-staged": "10.5.0",
+    "mocha": "8.2.0",
+    "mocha-eslint": "6.0.0",
     "mockery": "2.1.0",
-    "sinon": "7.1.1",
-    "sinon-chai": "3.3.0"
+    "prettier": "2.1.2",
+    "sinon": "9.2.0",
+    "sinon-chai": "3.5.0",
+    "standard-version": "9.0.0"
+  },
+  "prettier": "@agilemd/prettier-config",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "eslint --ext .jsx,.js --fix --ignore-path .gitignore",
+      "prettier --write"
+    ],
+    "*{.md}": "prettier --write"
   }
 }
