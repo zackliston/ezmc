@@ -2,7 +2,10 @@ const { MongoClient } = require('mongodb');
 const debug = require('debug')('ezmc');
 
 const KEYS = {
-  client: Symbol('client')
+  client: Symbol('client'),
+  dbName: Symbol('dbName'),
+  connectionString: Symbol('connectionString'),
+  connectionOptions: Symbol('connectionOption')
 };
 
 class DB {
@@ -19,27 +22,30 @@ class DB {
       throw new Error('db-core cannot be initiated without a connectionString');
     }
 
-    this[KEYS.client] = new MongoClient(connectionString, options);
     this[KEYS.dbName] = dbName;
-    this.reconnect();
+    this[KEYS.connectionString] = connectionString;
+    this[KEYS.connectionOptions] = options;
   }
 
-  reconnect() {
-    return this[KEYS.client]
-      .connect()
-      .then(() => this[KEYS.client].db(this[KEYS.dbName]));
+  async reconnect() {
+    this[KEYS.client] = await MongoClient.connect(
+      this[KEYS.connectionString],
+      this[KEYS.connectionOptions]
+    );
+
+    return Promise.resolve(this[KEYS.client].db(this[KEYS.dbName]));
   }
 
-  getDatabase() {
-    if (this[KEYS.client] && this[KEYS.client].isConnected()) {
-      return Promise.resolve(this[KEYS.client].db(this[KEYS.dbName]));
+  async getDatabase() {
+    if (!this[KEYS.client] || !this[KEYS.client].isConnected()) {
+      await this.reconnect();
     }
 
-    return this.reconnect();
+    return Promise.resolve(this[KEYS.client].db(this[KEYS.dbName]));
   }
 
   close(force) {
-    return this.getDatabase().then(db => db.close(force));
+    return this[KEYS.client].close(force);
   }
 
   aggregate(collection, pipeline, _options) {
