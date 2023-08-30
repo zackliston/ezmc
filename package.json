@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "debug": "4.2.0",
-    "mongodb": "3.6.2"
+    "mongodb": "3.6.10"
   },
   "devDependencies": {
     "@agilemd/commitlint-config": "0.1.0",
