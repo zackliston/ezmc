@@ -32,7 +32,7 @@
     "node": "6.5.x"
   },
   "dependencies": {
-    "debug": "4.2.0",
+    "debug": "4.3.1",
     "mongodb": "3.6.2"
   },
   "devDependencies": {
